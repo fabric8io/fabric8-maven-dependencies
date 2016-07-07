@@ -35,10 +35,13 @@ node {
     println "About to try replace versions: ${replaceVersions}"
 
     if (replaceVersions.size() > 0) {
+      println "Now updating all projects within organisation: ${organisation}"
+
       repoApi = new URL("https://api.github.com/orgs/${organisation}/repos")
       repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
 
       for (repo in repos) {
+        println "Processing repo: ${repo}"
 
         // lets check if the repo has a pom.xml
         pomUrl = new URL("https://raw.githubusercontent.com/${organisation}/${repo}/master/pom.xml")
