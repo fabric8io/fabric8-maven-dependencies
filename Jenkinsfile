@@ -40,7 +40,8 @@ node {
       repoApi = new URL("https://api.github.com/orgs/${organisation}/repos")
       repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
 
-      for (repo in repos) {
+      for (repoData in repos) {
+        def repo = repoData.name
         println "Processing repo: ${repo}"
 
         // lets check if the repo has a pom.xml
