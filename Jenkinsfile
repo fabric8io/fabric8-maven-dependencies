@@ -102,25 +102,30 @@ node {
 }
 
 @NonCPS
-def loadPomPropertyVersions(fileName) {
-  echo "Finding property versions in file ${fileName}"
+def loadPomPropertyVersions(String fileName) {
+  echo "Finding property versions in file: ${fileName}"
 
   def answer = [:]
-  def localPomXml = readFile file: fileName
-  localPomXml.take(localPomXml.indexOf('<project'))
-  def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
-  def propertiesList = xmlDom.getElementsByTagName("properties")
-  if (propertiesList.length == 0) {
-    echo "No <properties> element found in pom.xml!"
-  } else {
-    def propertiesElement = propertiesList.item(0)
-    for (node in propertiesElement.childNodes) {
-      if (node instanceof Element) {
-        answer[node.nodeName] = node.textContent
+  try {
+    def localPomXml = readFile file: fileName
+    localPomXml.take(localPomXml.indexOf('<project'))
+    def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
+    def propertiesList = xmlDom.getElementsByTagName("properties")
+    if (propertiesList.length == 0) {
+      echo "No <properties> element found in pom.xml!"
+    } else {
+      def propertiesElement = propertiesList.item(0)
+      for (node in propertiesElement.childNodes) {
+        if (node instanceof Element) {
+          answer[node.nodeName] = node.textContent
+        }
       }
     }
+    echo "Have loaded replaceVersions ${answer}"
+  } catch (e) {
+    echo "Failed to parse file ${fileName} due to: ${e}"
+    e.printStackTrace()
   }
-  echo "Have loaded replaceVersions ${answer}"
   return answer
 }
 
