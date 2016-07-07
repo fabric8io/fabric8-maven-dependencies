@@ -34,7 +34,7 @@ node {
 
     println "About to try replace versions: ${replaceVersions}"
 
-    if (!replaceVersions.isEmpty()) {
+    if (replaceVersions.size() > 0) {
       repoApi = new URL("https://api.github.com/orgs/${organisation}/repos")
       repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
 
