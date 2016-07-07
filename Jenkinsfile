@@ -124,7 +124,7 @@ def loadPomPropertyVersions(String xml, replaceVersions) {
     }
     println "Have loaded replaceVersions ${answer}"
   } catch (e) {
-    println "Failed to parse file ${fileName} due to: ${e}"
+    println "Failed to parse XML due to: ${e}"
     e.printStackTrace()
   }
 }
