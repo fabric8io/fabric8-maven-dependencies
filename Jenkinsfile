@@ -14,23 +14,7 @@ node {
 
     def flow = new io.fabric8.Fabric8Commands()
 
-    def replaceVersions = [:]
-
-    def localPomXml = readFile file: "pom.xml"
-    localPomXml.take(localPomXml.indexOf('<project'))
-    def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
-    def propertiesList = xmlDom.getElementsByTagName("properties")
-    if (propertiesList.length == 0) {
-      echo "No <properties> element found in pom.xml!"
-    } else {
-      def propertiesElement = propertiesList.item(0)
-
-      for (node in propertiesElement.childNodes) {
-        if (node instanceof Element) {
-          replaceVersions[node.tagName] = node.textContent
-        }
-      }
-    }
+    def replaceVersions = loadPropertyVersions(pomLocation)
 
     println "About to try replace versions: ${replaceVersions}"
 
@@ -114,6 +98,28 @@ node {
       }
     }
   }
+}
+
+@NonCPS
+def loadPropertyVersions(fileName) {
+  def replaceVersions = [:]
+
+  def localPomXml = readFile file: fileName
+  localPomXml.take(localPomXml.indexOf('<project'))
+  def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
+  def propertiesList = xmlDom.getElementsByTagName("properties")
+  if (propertiesList.length == 0) {
+    echo "No <properties> element found in pom.xml!"
+  } else {
+    def propertiesElement = propertiesList.item(0)
+
+    for (node in propertiesElement.childNodes) {
+      if (node instanceof Element) {
+        replaceVersions[node.tagName] = node.textContent
+      }
+    }
+  }
+  return replaceVersions
 }
 
 @NonCPS
