@@ -122,7 +122,7 @@ def loadPomPropertyVersions(String xml, replaceVersions) {
         }
       }
     }
-    println "Have loaded replaceVersions ${answer}"
+    println "Have loaded replaceVersions ${replaceVersions}"
   } catch (e) {
     println "Failed to parse XML due to: ${e}"
     e.printStackTrace()
