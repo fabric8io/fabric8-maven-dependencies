@@ -15,7 +15,8 @@ node {
     def flow = new io.fabric8.Fabric8Commands()
 
     def replaceVersions = [:]
-    loadPomPropertyVersions(pomLocation, replaceVersions)
+    def localPomXml = readFile file: pomLocation
+    loadPomPropertyVersions(localPomXml, replaceVersions)
 
     println "About to try replace versions: '${replaceVersions}'"
 
@@ -103,13 +104,13 @@ node {
 }
 
 @NonCPS
-def loadPomPropertyVersions(String fileName, replaceVersions) {
-  println "Finding property versions in file: ${fileName}"
+def loadPomPropertyVersions(String xml, replaceVersions) {
+  println "Finding property versions from XML"
 
   try {
-    def localPomXml = readFile file: fileName
-    localPomXml.take(localPomXml.indexOf('<project'))
-    def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
+    def index = xml.indexOf('<project')
+    def header = xml.take(index)
+    def xmlDom = DOMBuilder.newInstance().parseText(xml)
     def propertiesList = xmlDom.getElementsByTagName("properties")
     if (propertiesList.length == 0) {
       println "No <properties> element found in pom.xml!"
