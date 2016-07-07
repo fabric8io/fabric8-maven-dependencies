@@ -103,8 +103,9 @@ node {
 
 @NonCPS
 def loadPomPropertyVersions(fileName) {
-  def replaceVersions = [:]
+  echo "Finding property versions in file ${fileName}"
 
+  def answer = [:]
   def localPomXml = readFile file: fileName
   localPomXml.take(localPomXml.indexOf('<project'))
   def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
@@ -113,15 +114,14 @@ def loadPomPropertyVersions(fileName) {
     echo "No <properties> element found in pom.xml!"
   } else {
     def propertiesElement = propertiesList.item(0)
-
     for (node in propertiesElement.childNodes) {
       if (node instanceof Element) {
-        replaceVersions[node.nodeName] = node.textContent
+        answer[node.nodeName] = node.textContent
       }
     }
   }
-  echo "Have loaded replaceVersions ${replaceVersions}"
-  return replaceVersions
+  echo "Have loaded replaceVersions ${answer}"
+  return answer
 }
 
 @NonCPS
