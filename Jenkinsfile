@@ -55,12 +55,11 @@ node {
 
           def changed = false
           for (entry in replaceVersions) {
-            println("replacing property ${entry.key} with value: ${entry.value}")
-            println("replacing property ${entry.key} with value: ${entry.value}")
             def pom = updateVersion(xml, entry.key, entry.value)
             if (pom != null) {
               xml = pom
               changed = true
+              println("project ${repo} replaced property ${entry.key} with value: ${entry.value}")
             }
           }
           if (changed) {
