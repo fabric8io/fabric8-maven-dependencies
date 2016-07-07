@@ -14,7 +14,7 @@ node {
 
     def flow = new io.fabric8.Fabric8Commands()
 
-    def replaceVersions = loadPropertyVersions(pomLocation)
+    def replaceVersions = loadPomPropertyVersions(pomLocation)
 
     println "About to try replace versions: ${replaceVersions}"
 
@@ -53,6 +53,7 @@ node {
 
           def changed = false
           for (entry in replaceVersions) {
+            println("replacing property ${entry.key} with value: ${entry.value}")
             println("replacing property ${entry.key} with value: ${entry.value}")
             def pom = updateVersion(xml, entry.key, entry.value)
             if (pom != null) {
@@ -101,7 +102,7 @@ node {
 }
 
 @NonCPS
-def loadPropertyVersions(fileName) {
+def loadPomPropertyVersions(fileName) {
   def replaceVersions = [:]
 
   def localPomXml = readFile file: fileName
@@ -115,10 +116,11 @@ def loadPropertyVersions(fileName) {
 
     for (node in propertiesElement.childNodes) {
       if (node instanceof Element) {
-        replaceVersions[node.tagName] = node.textContent
+        replaceVersions[node.nodeName] = node.textContent
       }
     }
   }
+  echo "Have loaded replaceVersions ${replaceVersions}"
   return replaceVersions
 }
 
