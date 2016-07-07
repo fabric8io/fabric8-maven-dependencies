@@ -14,7 +14,8 @@ node {
 
     def flow = new io.fabric8.Fabric8Commands()
 
-    def replaceVersions = loadPomPropertyVersions(pomLocation)
+    def replaceVersions = [:]
+    loadPomPropertyVersions(pomLocation, replaceVersions)
 
     println "About to try replace versions: '${replaceVersions}'"
 
@@ -102,10 +103,9 @@ node {
 }
 
 @NonCPS
-def loadPomPropertyVersions(String fileName) {
+def loadPomPropertyVersions(String fileName, replaceVersions) {
   println "Finding property versions in file: ${fileName}"
 
-  def answer = [:]
   try {
     def localPomXml = readFile file: fileName
     localPomXml.take(localPomXml.indexOf('<project'))
@@ -117,7 +117,7 @@ def loadPomPropertyVersions(String fileName) {
       def propertiesElement = propertiesList.item(0)
       for (node in propertiesElement.childNodes) {
         if (node instanceof Element) {
-          answer[node.nodeName] = node.textContent
+          replaceVersions[node.nodeName] = node.textContent
         }
       }
     }
@@ -126,7 +126,6 @@ def loadPomPropertyVersions(String fileName) {
     println "Failed to parse file ${fileName} due to: ${e}"
     e.printStackTrace()
   }
-  return answer
 }
 
 @NonCPS
