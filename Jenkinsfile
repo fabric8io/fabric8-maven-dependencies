@@ -16,7 +16,7 @@ node {
 
     def replaceVersions = loadPomPropertyVersions(pomLocation)
 
-    println "About to try replace versions: ${replaceVersions}"
+    println "About to try replace versions: '${replaceVersions}'"
 
     if (replaceVersions.size() > 0) {
       println "Now updating all projects within organisation: ${organisation}"
@@ -103,7 +103,7 @@ node {
 
 @NonCPS
 def loadPomPropertyVersions(String fileName) {
-  echo "Finding property versions in file: ${fileName}"
+  println "Finding property versions in file: ${fileName}"
 
   def answer = [:]
   try {
@@ -112,7 +112,7 @@ def loadPomPropertyVersions(String fileName) {
     def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
     def propertiesList = xmlDom.getElementsByTagName("properties")
     if (propertiesList.length == 0) {
-      echo "No <properties> element found in pom.xml!"
+      println "No <properties> element found in pom.xml!"
     } else {
       def propertiesElement = propertiesList.item(0)
       for (node in propertiesElement.childNodes) {
@@ -121,9 +121,9 @@ def loadPomPropertyVersions(String fileName) {
         }
       }
     }
-    echo "Have loaded replaceVersions ${answer}"
+    println "Have loaded replaceVersions ${answer}"
   } catch (e) {
-    echo "Failed to parse file ${fileName} due to: ${e}"
+    println "Failed to parse file ${fileName} due to: ${e}"
     e.printStackTrace()
   }
   return answer
