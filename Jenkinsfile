@@ -49,8 +49,7 @@ node {
           sh "cd ${repo} && git checkout -b versionUpdate${uid}"
 
           def xml = readFile file: "${repo}/${pomLocation}"
-          sh "cat ${repo}/${pomLocation}"
-
+          //sh "cat ${repo}/${pomLocation}"
 
           def changed = false
           for (entry in replaceVersions) {
@@ -63,8 +62,9 @@ node {
           }
           if (changed) {
             writeFile file: "${repo}/${pomLocation}", text: xml
+            echo "updated file ${repo}/${pomLocation}"
 
-            sh "cat ${repo}/${pomLocation}"
+            //sh "cat ${repo}/${pomLocation}"
 
             kubernetes.pod('buildpod').withImage('fabric8/maven-builder:latest')
                     .withPrivileged(true)
@@ -132,6 +132,7 @@ def updateVersion(xml, elementName, newVersion) {
     def versions = xmlDom.getElementsByTagName(elementName)
     if (versions.length == 0) {
       echo "No element found called ${elementName}"
+      return null
     } else {
       def version = versions.item(0)
       echo "version ${elementName} = ${version.textContent}"
