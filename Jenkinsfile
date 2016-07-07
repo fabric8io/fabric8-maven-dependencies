@@ -16,8 +16,9 @@ node {
 
     def replaceVersions = [:]
 
-    def xmlDom = DOMBuilder.newInstance().parseText("pom.xml")
-    def root = xmlDom.documentElement
+    def localPomXml = readFile file: "pom.xml"
+    localPomXml.take(localPomXml.indexOf('<project'))
+    def xmlDom = DOMBuilder.newInstance().parseText(localPomXml)
     def propertiesList = xmlDom.getElementsByTagName("properties")
     if (propertiesList.length == 0) {
       echo "No <properties> element found in pom.xml!"
