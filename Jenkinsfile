@@ -28,7 +28,7 @@ node {
 
       for (repoData in repos) {
         def repo = repoData.name
-        println "Processing repo: ${repo}"
+        def project = "${organisation}/${repo}"
 
         // lets check if the repo has a pom.xml
         pomUrl = new URL("https://raw.githubusercontent.com/${organisation}/${repo}/master/pom.xml")
@@ -40,8 +40,6 @@ node {
         }
 
         if (hasPom) {
-          def project = "${organisation}/${repo}"
-
           stage "Updating ${project}"
           sh "rm -rf ${repo}"
           sh "git clone https://github.com/${project}.git"
@@ -55,16 +53,15 @@ node {
 
           def changed = false
           for (entry in replaceVersions) {
-            def pom = updateVersion(xml, entry.key, entry.value)
+            def pom = updateVersion(project, xml, entry.key, entry.value)
             if (pom != null) {
               xml = pom
               changed = true
-              println("project ${repo} replaced property ${entry.key} with value: ${entry.value}")
             }
           }
           if (changed) {
             writeFile file: "${repo}/${pomLocation}", text: xml
-            echo "updated file ${repo}/${pomLocation}"
+            println "updated file ${repo}/${pomLocation}"
 
             //sh "cat ${repo}/${pomLocation}"
 
@@ -93,9 +90,11 @@ node {
             pr = readFile("${repo}/pr.txt")
             split = pr.split('\\/')
             def prId = split[6].trim()
-            echo "received Pull Request Id: ${prId}"
+            println "received Pull Request Id: ${prId}"
             flow.addMergeCommentToPullRequest(prId, project)
           }
+        } else {
+          println "Ignoring project ${project} as it has no pom.xml"
         }
       }
     }
@@ -129,7 +128,7 @@ def loadPomPropertyVersions(String xml, replaceVersions) {
 }
 
 @NonCPS
-def updateVersion(xml, elementName, newVersion) {
+def updateVersion(project, xml, elementName, newVersion) {
   def index = xml.indexOf('<project')
   def header = xml.take(index)
   def xmlDom = DOMBuilder.newInstance().parseText(xml)
@@ -137,11 +136,11 @@ def updateVersion(xml, elementName, newVersion) {
   use(DOMCategory) {
     def versions = xmlDom.getElementsByTagName(elementName)
     if (versions.length == 0) {
-      echo "No element found called ${elementName}"
+      println "project ${project} pom.xml does not contain property: ${elementName}"
       return null
     } else {
       def version = versions.item(0)
-      echo "version ${elementName} = ${version.textContent}"
+      println "project ${project} updated property ${elementName} to ${version.textContent}"
       if (newVersion != version.textContent) {
         version.textContent = newVersion
 
