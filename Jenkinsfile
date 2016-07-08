@@ -140,8 +140,8 @@ def updateVersion(project, xml, elementName, newVersion) {
       return null
     } else {
       def version = versions.item(0)
-      println "project ${project} updated property ${elementName} to ${version.textContent}"
       if (newVersion != version.textContent) {
+        println "project ${project} updated property ${elementName} to ${newVersion}"
         version.textContent = newVersion
 
         def newXml = XmlUtil.serialize(root)
