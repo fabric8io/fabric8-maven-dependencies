@@ -37,14 +37,18 @@
   -->
 
   <properties>
+    <activemq.version>5.12.1</activemq.version>
     <archaius.version>0.6.6</archaius.version>
     <camel.version>2.17.2</camel.version>
     <commons-lang3.version>3.4</commons-lang3.version>
+    <cxf.plugin.version>3.1.4</cxf.plugin.version>
+    <cxf.version>3.1.4</cxf.version>
     <fabric8.version>2.2.142</fabric8.version>
     <fabric8-ipaas.version>2.2.103</fabric8-ipaas.version>
     <hystrix.version>1.4.9</hystrix.version>
     <guava.version>19.0</guava.version>
     <h2.version>1.4.192</h2.version>
+    <jetty-version>9.2.10.v20150310</jetty-version>
     <kie.version>6.4.0.Final</kie.version>
     <kie-camel.version>6.2.0.Final</kie-camel.version>
     <kubeflix.version>1.0.13</kubeflix.version>
@@ -53,13 +57,17 @@
     <ribbon.version>2.1.2</ribbon.version>
     <rxjava.version>1.0.10</rxjava.version>
     <rxnetty.version>0.4.9</rxnetty.version>
+    <slf4j-version>1.7.12</slf4j-version>
     <spring-boot.version>1.3.6.RELEASE</spring-boot.version>
     <spring-boot-plugin.version>1.3.6.RELEASE</spring-boot-plugin.version>
+    <spring-cloud-kubernetes.version>0.0.8</spring-cloud-kubernetes.version>
     <spring-cloud.version>1.0.5.RELEASE</spring-cloud.version>
     <spring-cloud-netflix.version>1.0.6.RELEASE</spring-cloud-netflix.version>
+    <swagger-version>1.5.7</swagger-version>
     <teiid.version>9.0.0.Final</teiid.version>
     <turbine.version>1.0.0</turbine.version>
     <vertx.version>3.2.1</vertx.version>
+    <weld.version>2.3.3.Final</weld.version>
     <wildfly-swarm.version>1.0.0.Final</wildfly-swarm.version>
 
     <!-- maven plugins -->
