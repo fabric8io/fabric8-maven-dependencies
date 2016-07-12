@@ -43,7 +43,7 @@
     <commons-lang3.version>3.4</commons-lang3.version>
     <cxf.plugin.version>3.1.4</cxf.plugin.version>
     <cxf.version>3.1.4</cxf.version>
-    <fabric8.version>2.2.142</fabric8.version>
+    <fabric8.version>2.2.143</fabric8.version>
     <fabric8-ipaas.version>2.2.103</fabric8-ipaas.version>
     <hystrix.version>1.4.9</hystrix.version>
     <guava.version>19.0</guava.version>
