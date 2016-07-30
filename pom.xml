@@ -76,5 +76,6 @@
     <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
     <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
     <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+
   </properties>
 </project>
