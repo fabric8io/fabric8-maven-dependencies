@@ -27,6 +27,9 @@ node {
       repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
 
       for (repoData in repos) {
+        println "project to process ${organisation}/${repoData.name}"
+      }
+      for (repoData in repos) {
         def repo = repoData.name
         def project = "${organisation}/${repo}"
 
@@ -136,7 +139,7 @@ def updateVersion(project, xml, elementName, newVersion) {
   use(DOMCategory) {
     def versions = xmlDom.getElementsByTagName(elementName)
     if (versions.length == 0) {
-      println "project ${project} pom.xml does not contain property: ${elementName}"
+      //println "project ${project} pom.xml does not contain property: ${elementName}"
       return null
     } else {
       def version = versions.item(0)
