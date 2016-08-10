@@ -23,7 +23,7 @@ node {
     if (replaceVersions.size() > 0) {
       println "Now updating all projects within organisation: ${organisation}"
 
-      repoApi = new URL("https://api.github.com/orgs/${organisation}/repos")
+      repoApi = new URL("https://api.github.com/orgs/${organisation}/repos?per_page=100")
       repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
 
       for (repoData in repos) {
