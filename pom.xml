@@ -79,7 +79,7 @@
     <spring-cloud-kubernetes.version>0.0.16</spring-cloud-kubernetes.version>
     <spring-cloud-netflix.version>1.0.6.RELEASE</spring-cloud-netflix.version>
     <spring.features.version>3.0.4</spring.features.version>
-    <sundrio.version>0.3.10</sundrio.version>
+    <sundrio.version>0.3.3</sundrio.version>
     <swagger-version>1.5.7</swagger-version>
     <teiid.version>9.0.0.Final</teiid.version>
     <turbine.version>1.0.0</turbine.version>
