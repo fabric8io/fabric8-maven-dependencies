@@ -84,7 +84,7 @@
     <teiid.version>9.0.0.Final</teiid.version>
     <turbine.version>1.0.0</turbine.version>
     <version.maven-bundle-plugin>2.3.7</version.maven-bundle-plugin>
-    <vertx.version>3.2.1</vertx.version>
+    <vertx.version>3.3.3</vertx.version>
     <weld.version>2.3.3.Final</weld.version>
     <wildfly-swarm.version>1.0.0.Final</wildfly-swarm.version>
 
