@@ -37,7 +37,7 @@
   <properties>
     <activemq.version>5.14.1</activemq.version>
     <archaius.version>0.6.6</archaius.version>
-    <camel.version>2.18.0</camel.version>
+    <camel.version>2.18.1</camel.version>
     <cdi-api.version>1.2</cdi-api.version>
     <commons-lang3.version>3.4</commons-lang3.version>
     <commons-logging.version>1.2</commons-logging.version>
@@ -72,8 +72,8 @@
     <rxjava.version>1.0.10</rxjava.version>
     <rxnetty.version>0.4.9</rxnetty.version>
     <slf4j-version>1.7.12</slf4j-version>
-    <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
-    <spring-boot-plugin.version>1.4.1.RELEASE</spring-boot-plugin.version>
+    <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
+    <spring-boot-plugin.version>1.4.2.RELEASE</spring-boot-plugin.version>
     <spring-cloud.version>1.0.5.RELEASE</spring-cloud.version>
     <spring-cloud-dependencies.version>Brixton.SR4</spring-cloud-dependencies.version>
     <spring-cloud-kubernetes.version>0.0.16</spring-cloud-kubernetes.version>
