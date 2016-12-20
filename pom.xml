@@ -54,9 +54,9 @@
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
     <jboss-jaxrs-api_2.0_spec.version>1.0.0.Final</jboss-jaxrs-api_2.0_spec.version>
     <jetty-version>9.2.19.v20160908</jetty-version>
-    <karaf.maven.plugin.version>4.0.7</karaf.maven.plugin.version>
-    <karaf.plugin.version>4.0.7</karaf.plugin.version>
-    <karaf.version>4.0.7</karaf.version>
+    <karaf.maven.plugin.version>4.0.8</karaf.maven.plugin.version>
+    <karaf.plugin.version>4.0.8</karaf.plugin.version>
+    <karaf.version>4.0.8</karaf.version>
     <kie.version>6.4.0.Final</kie.version>
     <kie-camel.version>6.2.0.Final</kie-camel.version>
     <kubeflix.version>1.0.26</kubeflix.version>
