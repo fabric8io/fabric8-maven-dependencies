@@ -72,8 +72,8 @@
     <rxjava.version>1.0.10</rxjava.version>
     <rxnetty.version>0.4.9</rxnetty.version>
     <slf4j-version>1.7.12</slf4j-version>
-    <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
-    <spring-boot-plugin.version>1.4.2.RELEASE</spring-boot-plugin.version>
+    <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
+    <spring-boot-plugin.version>1.4.3.RELEASE</spring-boot-plugin.version>
     <spring-cloud.version>1.0.5.RELEASE</spring-cloud.version>
     <spring-cloud-dependencies.version>Brixton.SR4</spring-cloud-dependencies.version>
     <spring-cloud-kubernetes.version>0.0.16</spring-cloud-kubernetes.version>
@@ -86,7 +86,7 @@
     <version.maven-bundle-plugin>2.3.7</version.maven-bundle-plugin>
     <vertx.version>3.3.3</vertx.version>
     <weld.version>2.3.3.Final</weld.version>
-    <wildfly-swarm.version>2016.12.0</wildfly-swarm.version>
+    <wildfly-swarm.version>2016.12.1</wildfly-swarm.version>
 
     <!-- maven plugins -->
     <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
