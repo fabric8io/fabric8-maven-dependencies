@@ -6,6 +6,8 @@ clientsNode {
     checkout scm
     sh "git remote set-url origin git@github.com:fabric8io/fabric8-maven-dependencies.git"
 
-    mavenUpdateOrganisationDependencies('fabric8-quickstarts')
+    mavenUpdateOrganisationDependencies{
+      organisation = 'fabric8-quickstarts'
+    }
   }
 }
