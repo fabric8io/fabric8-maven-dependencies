@@ -46,7 +46,7 @@
     <docker.maven.plugin.version>0.17.2</docker.maven.plugin.version>
     <fabric8.version>2.2.190</fabric8.version>
     <fabric8-devops.version>2.2.302</fabric8-devops.version>
-    <fabric8-ipaas.version>2.2.166</fabric8-ipaas.version>
+    <fabric8-ipaas.version>2.2.167</fabric8-ipaas.version>
     <hystrix.version>1.4.9</hystrix.version>
     <guava.version>19.0</guava.version>
     <h2.version>1.4.192</h2.version>
