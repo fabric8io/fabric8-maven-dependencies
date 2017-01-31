@@ -37,7 +37,7 @@
   <properties>
     <activemq.version>5.14.1</activemq.version>
     <archaius.version>0.6.6</archaius.version>
-    <camel.version>2.18.1</camel.version>
+    <camel.version>2.18.2</camel.version>
     <cdi-api.version>1.2</cdi-api.version>
     <commons-lang3.version>3.4</commons-lang3.version>
     <commons-logging.version>1.2</commons-logging.version>
