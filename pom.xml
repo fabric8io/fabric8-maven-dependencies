@@ -44,7 +44,7 @@
     <cxf.plugin.version>3.1.9</cxf.plugin.version>
     <cxf.version>3.1.9</cxf.version>
     <docker.maven.plugin.version>0.17.2</docker.maven.plugin.version>
-    <fabric8.version>2.2.216</fabric8.version>
+    <fabric8.version>2.2.217</fabric8.version>
     <fabric8-devops.version>2.2.334</fabric8-devops.version>
     <fabric8-ipaas.version>2.2.168</fabric8-ipaas.version>
     <hystrix.version>1.4.9</hystrix.version>
